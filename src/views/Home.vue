@@ -1,8 +1,7 @@
 <template>
-  <div class="home">
-
     <mu-paper :z-depth="1" class="demo-list-wrap">
-      <mu-appbar color="primary">
+
+      <mu-appbar class="top" color="primary">
         <mu-button icon slot="left">
           <mu-icon value="menu"></mu-icon>
         </mu-button>
@@ -20,7 +19,7 @@
         </mu-carousel>
       </div>
 
-      <mu-list textline="three-line">
+      <mu-list style="max-height: 100%;"  textline="three-line">
         <mu-sub-header>今天</mu-sub-header>
 
         <mu-list-item-action v-for="(book,index) in booDatakList" :key="index">
@@ -40,11 +39,18 @@
           </mu-list-item>
           <mu-divider/>
         </mu-list-item-action>
-
       </mu-list>
 
+      <mu-container class="bottom">
+  <mu-bottom-nav :value.sync="shift" shift>
+    <mu-bottom-nav-item value="index" title="首页" icon="home"></mu-bottom-nav-item>
+    <mu-bottom-nav-item value="music" title="商城 " icon="music_note"></mu-bottom-nav-item>
+    <mu-bottom-nav-item value="books" title="联系人" icon="books"></mu-bottom-nav-item>
+    <mu-bottom-nav-item value="pictures" title="我的" icon="photo"></mu-bottom-nav-item>
+  </mu-bottom-nav>
+</mu-container>
+
     </mu-paper>
-  </div>
 </template>
 
 <script>
@@ -76,16 +82,33 @@ export default {
 </script>
 
 <style>
-.appbar {
-  height: 200px;
-}
 .swipper {
   margin-left: 1px;
   margin-right: 1px;
-  margin-top: -5px;
+  margin-top: 48px;
 }
 
 .demo-list-wrap {
   height: 100%;
+  margin-bottom: 45px;
+}
+.top{
+ position:fixed; 
+ z-index:40; 
+ width:100%;
+ max-width: 100%;
+ top:0px;
+}
+.bottom{
+ position:fixed; 
+ z-index:40; 
+ width:100%;
+ max-width: 100%;
+ background-color:#2196f3;
+ bottom:0px;
+}
+.mu-list{
+
+
 }
 </style>
