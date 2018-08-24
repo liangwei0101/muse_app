@@ -22,9 +22,24 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path: '/',
+      path: '/HomeDetail',
       name: 'HomeDetail',
       component: () => import('./views/BookDetail.vue')
+    },
+    {
+      path: '/MyZone',
+      name: 'MyZone',
+      component: () => import('./views/MyZone.vue')
+    },
+    {
+      path: '/MyBorrow',
+      name: 'MyBorrow',
+      component: () => import('./views/MyBorrow.vue')
+    },
+    {
+      path: '/',
+      name: 'BookComment',
+      component: () => import('./views/BookComment.vue')
     }
   ]
 })
