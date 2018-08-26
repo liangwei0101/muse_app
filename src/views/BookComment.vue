@@ -32,28 +32,21 @@
                     <mu-divider></mu-divider>
 
                     <mu-list-item avatar :ripple="false" button>
-                        <mu-list-item-content>
-                            <rate :length="5" :value="2.5" />
+                        <mu-badge :content="`评分:${book.bookScore}`" color="primary"></mu-badge>
+                        <mu-list-item-content class="slider">
+                            <mu-slider v-model="book.bookScore"></mu-slider>
                         </mu-list-item-content>
-                        <mu-list-item-action>
-                            <mu-list-item-action>
-                                <mu-badge content="2分" color="primary"></mu-badge>
-                            </mu-list-item-action>
-                        </mu-list-item-action>
                     </mu-list-item>
-                    <!-- <mu-list-item avatar :ripple="false" button>
-                        <mu-text-field multi-line :rows="3" placeholder="Input One" solo full-width class="demo-divider-form"></mu-text-field>
-                    </mu-list-item> -->
                 </mu-list>
                 <mu-divider></mu-divider>
                 <div class="inputComment">
-                    <mu-text-field multi-line :rows="8" placeholder="（选填）请发表你的看法" solo full-width class="demo-divider-form"></mu-text-field>
+                    <mu-text-field multi-line v-model="book.commentContent" :rows="8" placeholder="（选填）请发表你的看法" solo full-width class="demo-divider-form"></mu-text-field>
                 </div>
             </mu-paper>
         </div>
 
         <div class="button">
-            <mu-button large color="primary" @click="openNormalSnackbar">提交</mu-button>
+            <mu-button large color="primary" @click="addBookCommentAction">提交</mu-button>
 
             <mu-snackbar position="bottom" :open.sync="normal.open">
                 {{normal.message}}
@@ -66,12 +59,15 @@
 
 <script>
 import Vue from "vue";
-import rate from "vue-rate";
-Vue.use(rate);
+import rate from 'vue-rate';
+Vue.use(rate)
+
+import { addBookComment } from "@/api/book";
 
 export default {
   data() {
     return {
+      value2:50,
       shift: "index",
       active2: 0,
       selects: null,
@@ -87,10 +83,20 @@ export default {
         message: "已退还押金20经验值！",
         open: false,
         timeout: 3000
+      },
+      book: {
+        bookNo:'HS2469156352',
+        bookScore: 0,
+        commentContent: "",
+        commentLoveCount: 1,
+        commentId: ''
       }
     };
   },
-  mounted() {},
+  mounted() {
+      this.book.bookScore = 50;
+      console.log(this.book.bookScore)
+  },
   methods: {
     openNormalSnackbar() {
       if (this.normal.timer) clearTimeout(this.normal.timer);
@@ -98,6 +104,21 @@ export default {
       this.normal.timer = setTimeout(() => {
         this.normal.open = false;
       }, this.normal.timeout);
+    },
+    addBookCommentAction() {
+      console.log(this.book)
+      this.book.commentId = Date.parse(new Date());
+      addBookComment(this.book)
+        .then(response => {
+          var aa = response.data;
+          this.openNormalSnackbar();
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    onAfterRate (rate) {
+      alert(rate)
     }
   }
 };
@@ -114,5 +135,9 @@ export default {
 .button {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+.slider{
+    padding-top: 20px;
+    padding-left: 10px;
 }
 </style>

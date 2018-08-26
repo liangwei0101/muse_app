@@ -4,6 +4,7 @@ import { getToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
+  //baseURL: 'http://localhost:8080/',
   baseURL: 'http://101.132.124.171:8080/book-1.0.0/', // api的base_url
   timeout: 5000 // request timeout
 })

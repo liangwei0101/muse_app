@@ -57,8 +57,7 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import { bookList } from "@/api/book";
+import { reqBookList } from "@/api/book";
 
 export default {
   data() {
@@ -73,7 +72,7 @@ export default {
     };
   },
   mounted() {
-    bookList()
+    reqBookList()
       .then(response => {
         this.booDatakList = response.data;
         console.log(this.booDatakList);
