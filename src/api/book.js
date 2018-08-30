@@ -8,6 +8,13 @@ export function reqBookList(query) {
   })
 }
 
+export function reqBookCountList() {
+  return request({
+    url: '/book/count',
+    method: 'get',
+  })
+}
+
 export function addBookComment(parameter) {
   return request({
     url: '/bookComment/add',
