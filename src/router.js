@@ -37,9 +37,14 @@ export default new Router({
       component: () => import('./views/MyBorrow.vue')
     },
     {
-      path: '/',
+      path: '/BookComment',
       name: 'BookComment',
       component: () => import('./views/BookComment.vue')
-    }
+    },
+    {
+      path: '/BorrowConfirm',
+      name: 'BorrowConfirm',
+      component: () => import('./views/BorrowConfirm.vue')
+    },
   ]
 })

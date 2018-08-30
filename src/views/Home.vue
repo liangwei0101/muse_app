@@ -19,12 +19,12 @@
       </mu-carousel>
     </div>
 
-    <mu-list textline="two-line">
+    <mu-list textline="two-line" v-show="newBookListIsShow">
       <mu-sub-header>新书上架</mu-sub-header>
       <mu-divider/>
 
       <div v-for="(item,index) in newBookList" :key="index">
-        <mu-list-item avatar :ripple="false" button @click="goToBookDetail">
+        <mu-list-item avatar :ripple="false" button @click="goToBookDetail(item.no)">
           <mu-list-item-action>
             <mu-avatar>
               <img :src=item.url>
@@ -56,7 +56,7 @@
       <mu-divider/>
 
       <div v-for="(item,index) in bookList" :key="index">
-        <mu-list-item avatar :ripple="false" button @click="goToBookDetail">
+        <mu-list-item avatar :ripple="false" button @click="goToBookDetail(item.no)">
           <mu-list-item-action>
             <mu-avatar>
               <img :src=item.url>
@@ -108,21 +108,27 @@ export default {
         "http://101.132.124.171:8000/2.jpg",
         "http://101.132.124.171:8000/3.jpg"
       ],
-      shift: "index"
+      shift: "index",
+      newBookListIsShow: false
     };
   },
   mounted() {
+    console.log(this.$store.state.storeMsg);
     this.reqBookCountListAction();
   },
   methods: {
-    goToBookDetail() {
-      this.$router.push({ name: "HomeDetail", params: { userId: "111" } });
+    goToBookDetail(arg) {
+      this.$store.commit('setStoreMsg',arg);
+      this.$router.push({ name: "HomeDetail", params: { bookNo: arg } });
     },
     reqBookCountListAction() {
       reqBookCountList()
         .then(response => {
           this.bookList = response.data;
-          this.newBookList = this.bookList.slice(0,3);
+          this.newBookList = this.bookList.slice(0, 2);
+          if(this.newBookList.length > 0){
+            this.newBookListIsShow = true;
+          }
           console.log(response.data);
         })
         .catch(err => {

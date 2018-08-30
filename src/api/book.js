@@ -1,5 +1,12 @@
 import request from '@/utils/request'
 
+export function reqBookDetail(query) {
+  return request({
+    url: '/book' + '/' + query,
+    method: 'get',
+  })
+}
+
 export function reqBookList(query) {
   return request({
     url: '/book',
