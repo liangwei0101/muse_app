@@ -17,7 +17,7 @@ export function reqBookList(query) {
 
 export function reqBookCountList() {
   return request({
-    url: '/book/count',
+    url: '/book/test',
     method: 'get',
   })
 }
@@ -25,6 +25,14 @@ export function reqBookCountList() {
 export function addBookComment(parameter) {
   return request({
     url: '/bookComment/add',
+    method: 'post',
+    params: parameter
+  })
+}
+
+export function borrowBook(parameter) {
+  return request({
+    url: '/borrowBook/add',
     method: 'post',
     params: parameter
   })

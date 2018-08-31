@@ -41,7 +41,7 @@
             <mu-list-item-after-text>{{item.bookAverageScore}}分</mu-list-item-after-text>
             <div>
               <mu-icon size='12' left value="favorite_border"></mu-icon>
-              {{item.bookThumbsCount}}
+              {{item.bookLoveCount}}
               <mu-icon size='12' left value="mode_comment"></mu-icon>
               {{item.bookCommentCount}}
             </div>
@@ -73,7 +73,7 @@
             <mu-list-item-after-text>{{item.bookAverageScore}}分</mu-list-item-after-text>
             <div>
               <mu-icon size='12' left value="favorite_border"></mu-icon>
-              {{item.bookThumbsCount}}
+              {{item.bookLoveCount}}
               <mu-icon size='12' left value="mode_comment"></mu-icon>
               {{item.bookCommentCount}}
             </div>
@@ -109,7 +109,8 @@ export default {
         "http://101.132.124.171:8000/3.jpg"
       ],
       shift: "index",
-      newBookListIsShow: false
+      newBookListIsShow: false,
+      open: 'drafts'
     };
   },
   mounted() {

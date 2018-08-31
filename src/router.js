@@ -9,8 +9,8 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/home',
-      name: 'home',
+      path: '/Home',
+      name: 'Home',
       component: Home
     },
     {
@@ -22,34 +22,39 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path: '/HomeDetail',
+      path: '/homeDetail',
       name: 'HomeDetail',
       component: () => import('./views/BookDetail.vue')
     },
     {
-      path: '/MyZone',
+      path: '/myZone',
       name: 'MyZone',
       component: () => import('./views/MyZone.vue')
     },
     {
-      path: '/MyBorrow',
+      path: '/myBorrow',
       name: 'MyBorrow',
       component: () => import('./views/MyBorrow.vue')
     },
     {
-      path: '/BookComment',
+      path: '/bookComment',
       name: 'BookComment',
       component: () => import('./views/BookComment.vue')
     },
     {
-      path: '/BorrowConfirm',
+      path: '/borrowConfirm',
       name: 'BorrowConfirm',
       component: () => import('./views/BorrowConfirm.vue')
     },
     {
-      path: '/',
+      path: '/borrowSuccess',
       name: 'BorrowSuccess',
       component: () => import('./views/BorrowSuccess.vue')
+    },
+    {
+      path: '/',
+      name: 'WantReadBook',
+      component: () => import('./views/WantReadBook.vue')
     },
   ]
 })
