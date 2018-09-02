@@ -52,9 +52,19 @@ export default new Router({
       component: () => import('./views/BorrowSuccess.vue')
     },
     {
-      path: '/',
+      path: '/wantReadBook',
       name: 'WantReadBook',
       component: () => import('./views/WantReadBook.vue')
+    },
+    {
+      path: '/wantReadDetail',
+      name: 'WantReadDetail',
+      component: () => import('./views/WantReadDetail.vue')
+    },
+    {
+      path: '/',
+      name: 'WantReadList',
+      component: () => import('./views/WantReadList.vue')
     },
   ]
 })

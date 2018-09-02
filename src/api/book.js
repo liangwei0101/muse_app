@@ -37,3 +37,18 @@ export function borrowBook(parameter) {
     params: parameter
   })
 }
+
+export function addWantReadBook(parameter) {
+  return request({
+    url: '/wantRead/add',
+    method: 'post',
+    params: parameter
+  })
+}
+
+export function reqWantReadBook(parameter) {
+  return request({
+    url: '/wantRead/byName/' + parameter,
+    method: 'get',
+  })
+}

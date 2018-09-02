@@ -18,7 +18,7 @@
 
         </mu-row>
         <br>
-        <mu-button class="button" color="primary" @click="goMyZone">下一步</mu-button>
+        <mu-button class="button" color="primary" @click="reqWantReadBookAction()">下一步</mu-button>
 
       </div>
 
@@ -28,50 +28,65 @@
 
 <script>
 import { getNextMonth } from "@/utils/time";
-import { reqBookDetail } from "@/api/book";
+import { reqWantReadBook } from "@/api/book";
 
 export default {
-  data() {
-    return {
-      bookName: ''
-    };
-  },
-  mounted() {},
-  methods: {
-    goBack() {
-      this.$router.back(-1);
+    data() {
+        return {
+            bookName: ""
+        };
     },
-    goHome() {
-      this.$router.push({
-        name: "Home"
-      });
-    },
-    goMyZone() {
-      this.$router.push({
-        name: "MyZone"
-      });
+    mounted() {},
+    methods: {
+        goBack() {
+            this.$router.back(-1);
+        },
+        goHome() {
+            this.$router.push({
+                name: "Home"
+            });
+        },
+        goMyZone() {
+            this.$router.push({
+                name: "MyZone"
+            });
+        },
+        reqWantReadBookAction() {
+            reqWantReadBook(this.bookName)
+                .then(response => {
+                  console.log(response.data)
+                    this.likeBookList = response.data;
+                    if (this.likeBookList.length == 0) {
+                        this.$router.push({ name: "WantReadDetail", params:{"bookName": this.bookName}});
+                    }else{
+                        this.$router.push({ name: "WantReadDetail",params:{"bookName": this.bookName}});
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
     }
-  }
 };
 </script>
 
 <style>
 .content {
-  padding-top: 78px;
-  margin-left: 5px;
-  margin-right: 5px;
+    padding-top: 78px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 .top {
-  position: fixed;
-  z-index: 40;
-  width: 100%;
-  max-width: 100%;
-  top: 0px;
+    position: fixed;
+    z-index: 40;
+    width: 100%;
+    max-width: 100%;
+    top: 0px;
 }
 .button {
-  margin-top: 40px;
-  width: 200px;
-  margin-bottom: 30px;
+    margin-top: 40px;
+    width: 200px;
+    margin-bottom: 30px;
 }
 </style>
 
