@@ -62,9 +62,19 @@ export default new Router({
       component: () => import('./views/WantReadDetail.vue')
     },
     {
-      path: '/',
+      path: '/wantReadList',
       name: 'WantReadList',
       component: () => import('./views/WantReadList.vue')
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: () => import('./views/Login.vue')
+    },
+    {
+      path: '/Register',
+      name: 'Register',
+      component: () => import('./views/Register.vue')
     },
   ]
 })
