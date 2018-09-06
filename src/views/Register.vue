@@ -9,7 +9,7 @@
       </mu-form-item>
       <br>
       <mu-form-item>
-        <mu-button color="primary" @click="submit">注册</mu-button>
+        <mu-button color="cyan" @click="submit">注册</mu-button>
         <mu-button @click="clear">重置</mu-button>
       </mu-form-item>
     </mu-form>

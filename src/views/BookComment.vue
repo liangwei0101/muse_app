@@ -21,18 +21,18 @@
                             </mu-avatar>
                         </mu-list-item-action>
                         <mu-list-item-content>
-                            <mu-list-item-title>java数据库系统开发实例导航</mu-list-item-title>
-                            <mu-list-item-sub-title style="color: rgba(0, 0, 0, .87)">作者：王小明</mu-list-item-sub-title>
+                            <mu-list-item-title>{{book.bookName}}</mu-list-item-title>
+                            <mu-list-item-sub-title style="color: rgba(0, 0, 0, .87)">作者：{{book.author}}</mu-list-item-sub-title>
                         </mu-list-item-content>
                         <mu-list-item-action>
-                            <mu-list-item-after-text>3月1日</mu-list-item-after-text>
+                            <mu-list-item-after-text>{{book.endDate}}</mu-list-item-after-text>
                         </mu-list-item-action>
                     </mu-list-item>
 
                     <mu-divider></mu-divider>
 
                     <mu-list-item avatar :ripple="false" button>
-                        <mu-badge :content="`评分:${book.bookScore}`" color="primary"></mu-badge>
+                        <mu-badge :content="`评分:${book.bookScore}`" color="cyan"></mu-badge>
                         <mu-list-item-content class="slider">
                             <mu-slider v-model="book.bookScore"></mu-slider>
                         </mu-list-item-content>
@@ -46,7 +46,7 @@
         </div>
 
         <div class="button">
-            <mu-button large color="primary" @click="addBookCommentAction">提交</mu-button>
+            <mu-button large color="cyan" @click="addBookCommentAction">提交</mu-button>
 
             <mu-snackbar position="bottom" :open.sync="normal.open">
                 {{normal.message}}
@@ -58,16 +58,16 @@
 </template>
 
 <script>
-import Vue from "vue";
-import rate from 'vue-rate';
-Vue.use(rate)
-
+import Cookies from "js-cookie";
 import { addBookComment } from "@/api/book";
+import Vue from "vue";
+import rate from "vue-rate";
+Vue.use(rate);
 
 export default {
   data() {
     return {
-      value2:50,
+      value2: 50,
       shift: "index",
       active2: 0,
       selects: null,
@@ -85,17 +85,24 @@ export default {
         timeout: 3000
       },
       book: {
-        bookNo:'HS2469156352',
+        bookName: "",
+        bookNo: "",
         bookScore: 0,
         commentContent: "",
-        commentLoveCount: 1,
-        commentId: ''
+        commentId: "",
+        author: "",
+        endDate: "",
+        userId: ""
       }
     };
   },
   mounted() {
-      this.book.bookScore = 50;
-      console.log(this.book.bookScore)
+    this.book.userId = Cookies.get("userId");
+    this.book.bookName = Cookies.get("bookName");
+    this.book.bookNo = Cookies.get("bookNo");
+    this.book.author = Cookies.get("author");
+    this.book.endDate = Cookies.get("endDate");
+    this.book.bookScore = 50;
   },
   methods: {
     openNormalSnackbar() {
@@ -106,19 +113,19 @@ export default {
       }, this.normal.timeout);
     },
     addBookCommentAction() {
-      console.log(this.book)
-      this.book.commentId = Date.parse(new Date());
+      console.log(this.book);
+      this.book.commentId = 0;
       addBookComment(this.book)
         .then(response => {
-          var aa = response.data;
           this.openNormalSnackbar();
+          setTimeout(()=>{ this.$router.back(-1); }, 1200);
         })
         .catch(err => {
           console.log(err);
         });
     },
-    onAfterRate (rate) {
-      alert(rate)
+    onAfterRate(rate) {
+      alert(rate);
     }
   }
 };
@@ -136,8 +143,8 @@ export default {
   margin-top: 30px;
   margin-bottom: 30px;
 }
-.slider{
-    padding-top: 20px;
-    padding-left: 10px;
+.slider {
+  padding-top: 20px;
+  padding-left: 10px;
 }
 </style>

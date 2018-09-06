@@ -1,224 +1,284 @@
 <template>
-    <mu-paper :z-depth="1" class="demo-list-wrap">
-        <mu-appbar color="cyan">
-            <mu-button icon slot="left">
-                <mu-icon value="menu"></mu-icon>
-            </mu-button>
-            Inbox
-            <mu-button icon slot="right">
-                <mu-icon value="search"></mu-icon>
-            </mu-button>
-        </mu-appbar>
+  <mu-paper :z-depth="1" class="demo-list-wrap">
+    <mu-appbar color="cyan">
+      <mu-button icon slot="left" @click="goToBack">
+        <mu-icon value="chevron_left"></mu-icon>
+      </mu-button>
+      我的
+      <mu-button icon slot="right">
+        <mu-icon value="search"></mu-icon>
+      </mu-button>
+    </mu-appbar>
 
-        <mu-container class="tab">
-            <mu-tabs color="rgba(0, 0, 0, .54)" :value.sync="active2" indicator-color="yellow" full-width>
-                <mu-tab>全部</mu-tab>
-                <mu-tab>待取书</mu-tab>
-                <mu-tab>未还书</mu-tab>
-                <mu-tab>待评价</mu-tab>
-            </mu-tabs>
-            <div class="demo-text" v-if="active2 === 0">
-                <mu-list textline="two-line">
-                    <mu-list-item avatar :ripple="false" button>
-                        <mu-list-item-action>
-                            <mu-avatar>
-                                <img src="http://101.132.124.171:8000/bookInfo.jpg">
-                            </mu-avatar>
-                        </mu-list-item-action>
-                        <mu-list-item-content>
-                            <mu-list-item-title>java数据库系统开发实例导航</mu-list-item-title>
-                            <mu-list-item-sub-title style="color: rgba(0, 0, 0, .87)">作者：王小明</mu-list-item-sub-title>
-                            <mu-list-item-sub-title>
-                                状态：待取书
-                            </mu-list-item-sub-title>
-                        </mu-list-item-content>
-                        <mu-list-item-action>
-                            <mu-list-item-after-text>3月1日</mu-list-item-after-text>
-                            <mu-button small color="primary">
-                                <mu-icon left value="grade"></mu-icon>
-                                取消
-                            </mu-button>
-                        </mu-list-item-action>
-                    </mu-list-item>
-                    <mu-divider></mu-divider>
-                    <mu-list-item avatar :ripple="false" button>
-                        <mu-list-item-action>
-                            <mu-avatar>
-                                <img src="http://101.132.124.171:8000/bookInfo.jpg">
-                            </mu-avatar>
-                        </mu-list-item-action>
-                        <mu-list-item-content>
-                            <mu-list-item-title>java数据库系统开发实例导航</mu-list-item-title>
-                            <mu-list-item-sub-title style="color: rgba(0, 0, 0, .87)">作者：王小明</mu-list-item-sub-title>
-                            <mu-list-item-sub-title>
-                                状态：待取书
-                            </mu-list-item-sub-title>
-                        </mu-list-item-content>
-                        <mu-list-item-action>
-                            <mu-list-item-after-text>3月1日</mu-list-item-after-text>
-                            <mu-button small color="primary">
-                                <mu-icon left value="grade"></mu-icon>
-                                续借
-                            </mu-button>
-                        </mu-list-item-action>
-                    </mu-list-item>
-                    <mu-divider></mu-divider>
-                    <mu-list-item avatar :ripple="false" button>
-                        <mu-list-item-action>
-                            <mu-avatar>
-                                <img src="http://101.132.124.171:8000/bookInfo.jpg">
-                            </mu-avatar>
-                        </mu-list-item-action>
-                        <mu-list-item-content>
-                            <mu-list-item-title>java数据库系统开发实例导航</mu-list-item-title>
-                            <mu-list-item-sub-title style="color: rgba(0, 0, 0, .87)">作者：王小明</mu-list-item-sub-title>
-                            <mu-list-item-sub-title>
-                                状态：待取书
-                            </mu-list-item-sub-title>
-                        </mu-list-item-content>
-                        <mu-list-item-action>
-                            <mu-list-item-after-text>3月1日</mu-list-item-after-text>
-                            <mu-button small color="primary">
-                                <mu-icon left value="grade"></mu-icon>
-                                评价
-                            </mu-button>
-                        </mu-list-item-action>
-                    </mu-list-item>
-                    <mu-divider></mu-divider>
-                    <mu-list-item avatar :ripple="false" button>
-                        <mu-list-item-action>
-                            <mu-avatar>
-                                <img src="http://101.132.124.171:8000/bookInfo.jpg">
-                            </mu-avatar>
-                        </mu-list-item-action>
-                        <mu-list-item-content>
-                            <mu-list-item-title>java数据库系统开发实例导航</mu-list-item-title>
-                            <mu-list-item-sub-title style="color: rgba(0, 0, 0, .87)">作者：王小明</mu-list-item-sub-title>
-                            <mu-list-item-sub-title>
-                                状态：待取书
-                            </mu-list-item-sub-title>
-                        </mu-list-item-content>
-                        <mu-list-item-action>
-                            <mu-list-item-after-text>3月1日</mu-list-item-after-text>
-                            <mu-button small color="primary">
-                                <mu-icon left value="grade"></mu-icon>
-                                评价
-                            </mu-button>
-                        </mu-list-item-action>
-                    </mu-list-item>
-                    <mu-divider></mu-divider>
-                    <mu-list-item avatar :ripple="false" button>
-                        <mu-list-item-action>
-                            <mu-avatar>
-                                <img src="http://101.132.124.171:8000/bookInfo.jpg">
-                            </mu-avatar>
-                        </mu-list-item-action>
-                        <mu-list-item-content>
-                            <mu-list-item-title>java数据库系统开发实例导航</mu-list-item-title>
-                            <mu-list-item-sub-title style="color: rgba(0, 0, 0, .87)">作者：王小明</mu-list-item-sub-title>
-                            <mu-list-item-sub-title>
-                                状态：待取书
-                            </mu-list-item-sub-title>
-                        </mu-list-item-content>
-                        <mu-list-item-action>
-                            <mu-list-item-after-text>3月1日</mu-list-item-after-text>
-                            <mu-button small color="primary">
-                                <mu-icon left value="grade"></mu-icon>
-                                评价
-                            </mu-button>
-                        </mu-list-item-action>
-                    </mu-list-item>
-                </mu-list>
-            </div>
-            <div class="demo-text" v-if="active2 === 1">
-                <p>“我的心从来没有这么坚定过，所以我会为了补偿而死，也可以为了补偿而死……一辈子，急辈子都无所谓，我绝不后退！”</p>
-                <p>“如果我后退呢？如果我想要死呢？我不想你再次背对着我逃跑了……”</p>
-                <p>“那么就去地狱找到你，我绝对不逃！”</p>
-                <p>“白痴，你也哭了？因为那些软弱拖累你的脚步？”</p>
-            </div>
-            <div class="demo-text" v-if="active2 === 2">
-                <p>“不，这泪水……是因为勇气，因为力量，因为信任，……你不会懂的！”</p>
-                <p>“我不会帮你，想要什么样的未来……自己去追寻吧！”</p>
-                <p>“我不需要你的帮忙！未来我会一手开启，什么样的敌人我也不会惧怕……还有，其实我们可以成为朋友的……”</p>
-                <p>“也许吧，未来……给你了。”</p>
-            </div>
-            <div class="demo-text" v-if="active2 === 3">
-                <p>“今天月色真美。”</p>
-            </div>
-        </mu-container>
-
-        <!-- <mu-list textline="three-line">
-            <mu-sub-header>今天</mu-sub-header>
+    <mu-container class="tab">
+      <mu-tabs color="rgba(0, 0, 0, .54)" :value.sync="active2" indicator-color="yellow" full-width>
+        <mu-tab>全部</mu-tab>
+        <mu-tab>待取书</mu-tab>
+        <mu-tab>未还书</mu-tab>
+        <mu-tab>待评价</mu-tab>
+      </mu-tabs>
+      <div class="demo-text" v-if="active2 === 0">
+        <mu-list textline="three-line">
+          <div v-for="item in BookBorrowList" :key="item.bookName">
             <mu-list-item avatar :ripple="false" button>
-                <mu-list-item-action>
-                    <mu-avatar>
-                        <img src="http://101.132.124.171:8000/bookInfo.jpg">
-                    </mu-avatar>
-                </mu-list-item-action>
-                <mu-list-item-content>
-                    <mu-list-item-title>这个周末一起吃饭么?</mu-list-item-title>
-                    <mu-list-item-sub-title>
-                        <span style="color: rgba(0, 0, 0, .87)">Myron Liu -</span> 周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
-                    </mu-list-item-sub-title>
-                </mu-list-item-content>
+              <mu-list-item-action @click="goToBorrowDetail">
+                <mu-avatar>
+                  <img src="http://101.132.124.171:8000/bookInfo.jpg">
+                </mu-avatar>
+              </mu-list-item-action>
+              <mu-list-item-content @click="goToBorrowDetail">
+                <mu-list-item-title>{{item.bookName}}</mu-list-item-title>
+                <mu-list-item-sub-title> 作者：{{item.author}} &nbsp; 状态：{{item.bookStatus}}</mu-list-item-sub-title>
+                <mu-list-item-sub-title style="color: rgba(0, 0, 0, .87);">
+                  {{item.toolTip}}
+                </mu-list-item-sub-title>
+              </mu-list-item-content>
+              <mu-list-item-action>
+                <mu-list-item-after-text class="text">{{item.endDate}}</mu-list-item-after-text>
+                <mu-button @click="buttonClick(item)" flat color="cyan" v-show="item.isShow">
+                  {{item.operation}}
+                </mu-button>
+              </mu-list-item-action>
             </mu-list-item>
             <mu-divider></mu-divider>
+          </div>
+        </mu-list>
+      </div>
+      <div class="demo-text" v-if="active2 === 1">
+        <mu-list textline="three-line">
+          <div v-for="item in dealWithList" :key="item.bookName">
             <mu-list-item avatar :ripple="false" button>
-                <mu-list-item-action>
-                    <mu-avatar>
-                        <img src="http://101.132.124.171:8000/bookInfo.jpg">
-                    </mu-avatar>
-                </mu-list-item-action>
-                <mu-list-item-content>
-                    <mu-list-item-title>Alex Qin</mu-list-item-title>
-                    <mu-list-item-sub-title>
-                        <span style="color: rgba(0, 0, 0, .87)">看电影啊</span><br/> 我们去看电影，最近有部烂片上映，又有吐槽的了
-                    </mu-list-item-sub-title>
-                </mu-list-item-content>
+              <mu-list-item-action @click="goToBorrowDetail">
+                <mu-avatar>
+                  <img src="http://101.132.124.171:8000/bookInfo.jpg">
+                </mu-avatar>
+              </mu-list-item-action>
+              <mu-list-item-content @click="goToBorrowDetail">
+                <mu-list-item-title>{{item.bookName}}</mu-list-item-title>
+                <mu-list-item-sub-title> 作者：{{item.author}} &nbsp; 状态：{{item.bookStatus}}</mu-list-item-sub-title>
+                <mu-list-item-sub-title>
+                  {{item.toolTip}}
+                </mu-list-item-sub-title>
+              </mu-list-item-content>
+              <mu-list-item-action>
+                <mu-list-item-after-text class="text">{{item.endDate}}</mu-list-item-after-text>
+                <mu-button @click="buttonClick(item)" flat color="cyan" v-show="item.isShow">
+                  {{item.operation}}
+                </mu-button>
+              </mu-list-item-action>
             </mu-list-item>
             <mu-divider></mu-divider>
+          </div>
+        </mu-list>
+      </div>
+      <div class="demo-text" v-if="active2 === 2">
+        <mu-list textline="three-line">
+          <div v-for="item in notReturnList" :key="item.bookName">
             <mu-list-item avatar :ripple="false" button>
-                <mu-list-item-action>
-                    <mu-avatar>
-                        <img src="http://101.132.124.171:8000/bookInfo.jpg">
-                    </mu-avatar>
-                </mu-list-item-action>
-                <mu-list-item-content>
-                    <mu-list-item-title>LOL</mu-list-item-title>
-                    <mu-list-item-sub-title>
-                        <span style="color: rgba(0, 0, 0, .87)">去打游戏啊</span><br/> 周末一起 LOL
-                    </mu-list-item-sub-title>
-                </mu-list-item-content>
+              <mu-list-item-action @click="goToBorrowDetail">
+                <mu-avatar>
+                  <img src="http://101.132.124.171:8000/bookInfo.jpg">
+                </mu-avatar>
+              </mu-list-item-action>
+              <mu-list-item-content @click="goToBorrowDetail">
+                <mu-list-item-title>{{item.bookName}}</mu-list-item-title>
+                <mu-list-item-sub-title> 作者：{{item.author}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 状态：{{item.bookStatus}}</mu-list-item-sub-title>
+                <mu-list-item-sub-title>
+                  {{item.toolTip}}
+                </mu-list-item-sub-title>
+              </mu-list-item-content>
+              <mu-list-item-action>
+                <mu-list-item-after-text class="text">{{item.endDate}}</mu-list-item-after-text>
+                <mu-button @click="buttonClick(item)" flat color="cyan" v-show="item.isShow">
+                  {{item.operation}}
+                </mu-button>
+              </mu-list-item-action>
             </mu-list-item>
             <mu-divider></mu-divider>
+          </div>
+        </mu-list>
+      </div>
+      <div class="demo-text" v-if="active2 === 3">
+        <mu-list textline="two-line">
+          <div v-for="item in notComment" :key="item.bookName">
             <mu-list-item avatar :ripple="false" button>
-                <mu-list-item-action>
-                    <mu-avatar>
-                        <img src="http://101.132.124.171:8000/bookInfo.jpg">
-                    </mu-avatar>
-                </mu-list-item-action>
-                <mu-list-item-content>
-                    <mu-list-item-title>LOL</mu-list-item-title>
-                    <mu-list-item-sub-title>
-                        <span style="color: rgba(0, 0, 0, .87)">哇去</span><br/> 实在编不下去，这就是个demo
-                    </mu-list-item-sub-title>
-                </mu-list-item-content>
+              <mu-list-item-action @click="goToBorrowDetail">
+                <mu-avatar>
+                  <img src="http://101.132.124.171:8000/bookInfo.jpg">
+                </mu-avatar>
+              </mu-list-item-action>
+              <mu-list-item-content @click="goToBorrowDetail">
+                <mu-list-item-title>{{item.bookName}}</mu-list-item-title>
+                <mu-list-item-sub-title> 作者：{{item.author}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 状态：{{item.bookStatus}}</mu-list-item-sub-title>
+                <mu-list-item-sub-title>
+                  {{item.toolTip}}
+                </mu-list-item-sub-title>
+              </mu-list-item-content>
+              <mu-list-item-action>
+                <mu-list-item-after-text class="text">{{item.endDate}}</mu-list-item-after-text>
+                <mu-button @click="buttonClick(item)" flat color="cyan" v-show="item.isShow">
+                  {{item.operation}}
+                </mu-button>
+              </mu-list-item-action>
             </mu-list-item>
-        </mu-list> -->
+            <mu-divider></mu-divider>
+          </div>
+        </mu-list>
+      </div>
+    </mu-container>
 
-    </mu-paper>
-    </template>
+  </mu-paper>
+</template>
 
 <script>
+import Cookies from "js-cookie";
+import { reqBookBorrowList } from "@/api/book";
+import "muse-ui-message/dist/muse-ui-message.css";
+import Vue from "vue";
+import Message from "muse-ui-message";
+import Toast from "muse-ui-toast";
+Vue.use(Message);
+Vue.use(Toast);
+
 export default {
   data() {
     return {
       shift: "index",
       active2: 0,
-      selects: null
+      selects: null,
+      userId: "",
+      BookBorrowList: [],
+      dealWithList: [],
+      notReturnList: [],
+      notComment: []
     };
   },
-  mounted() {}
+  mounted() {
+    this.userId = Cookies.get("userId");
+    this.reqBookBorrowListAction();
+  },
+  methods: {
+    reqBookBorrowListAction() {
+      reqBookBorrowList(this.userId)
+        .then(response => {
+          this.BookBorrowList = response.data;
+          this.setDataList();
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    setDataList() {
+      console.log(this.BookBorrowList);
+      this.BookBorrowList.forEach(element => {
+        element.bookStatus = this.setStatus(element.status);
+        element.operation = this.setOpertion(element.status);
+        element.toolTip = this.setToolTip(element.status, element.days);
+        element.isShow = element.status == "5" ? false : true;
+        element.endDate = element.endDate.slice(5);
+        if (element.status == "1") {
+          this.dealWithList.push(element);
+        } else if (element.status == "2") {
+          this.notReturnList.push(element);
+        } else if (element.status == "3") {
+          this.notComment.push(element);
+        }
+      });
+    },
+    setStatus(status) {
+      var str = "";
+      if (status == "1") {
+        str = "待取书";
+      } else if (status == "2") {
+        str = "未还书";
+      } else if (status == "3") {
+        str = "待评价";
+      } else if (status == "4") {
+        str = "已还书";
+      } else if (status == "5") {
+        str = "已过期";
+      }
+      return str;
+    },
+    setOpertion(status) {
+      var str = "";
+      if (status == "1") {
+        str = "取消";
+      } else if (status == "2") {
+        str = "续借";
+      } else if (status == "3") {
+        str = "评价";
+      } else if (status == "4") {
+        str = "删除记录";
+      } else if (status == "5") {
+        str = "false";
+      }
+      return str;
+    },
+    setToolTip(status, days) {
+      var str = "";
+      if (status == "2") {
+        str = "还有" + days + "天到期";
+      } else if (status == "3") {
+        str = "过期天数" + days + "，扣除经验值:" + days;
+      } else str = "";
+      return str;
+    },
+    buttonClick(item) {
+      if (item.status == "1") {
+        this.confirm();
+      } else if (item.status == "2") {
+        this.alert();
+      } else if (item.status == "3") {
+        this.$store.commit("setAuthor", item.author);
+        this.$store.commit("setBookName", item.bookName);
+        this.$store.commit("setBookNo", item.bookNo);
+        this.$store.commit("setEndDate", item.endDate);
+        console.log(item.endDate);
+        this.$router.push({ name: "BookComment" });
+      } else if (item.status == "4") {
+        this.delComfirm();
+      }
+    },
+    confirm() {
+      this.$confirm("确定要取消借阅？", "提示", {
+        type: "warning"
+      }).then(({ result }) => {
+        if (result) {
+          Toast.message("操作成功！");
+          this.$router.push({ name: "BorrowDetail" });
+        } else {
+        }
+      });
+    },
+    alert() {
+      this.$alert(
+        "续借成功\n还书日期推迟为：2015／05/03请及时归还书籍，逾期不还，将会扣除你的经验值哦～",
+        "提示",
+        {
+          okLabel: "知道了"
+        }
+      ).then(() => {
+        this.$toast.message("提示信息");
+      });
+    },
+    delComfirm() {
+      this.$confirm("确定要删除？", "提示", {
+        type: "warning"
+      }).then(({ result }) => {
+        if (result) {
+          Toast.message("操作成功！");
+        } else {
+        }
+      });
+    },
+    goToBorrowDetail() {
+      this.$router.push({ name: "BorrowDetail" });
+    },
+    goToBack() {
+      this.$router.back(-1);
+    },
+  }
 };
 </script>
 
@@ -228,5 +288,12 @@ export default {
 .demo-list-wrap {
   width: 100%;
   overflow: hidden;
+}
+.text {
+  margin-right: 25px;
+}
+.tab {
+  height: 100%;
+  padding-bottom: 0px;
 }
 </style>

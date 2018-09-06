@@ -1,65 +1,46 @@
 <template>
     <div>
-        <mu-appbar class="top" color="primary">
+        <mu-appbar class="top" color="cyan">
             <mu-button icon slot="left" @click="goBack">
                 <mu-icon value="chevron_left"></mu-icon>
             </mu-button>
             图书详情
             <mu-button flat slot="right">
-                <mu-icon value="blur_circular"></mu-icon>
             </mu-button>
         </mu-appbar>
         <br>
 
-        <!-- <mu-container class="mu-container">
-            <mu-card-media title="Image Title" sub-title="Image Sub Title"> -->
-        <!-- <img class="card" src="http://101.132.124.171:8000/bookInfo.jpg"> -->
         <div class="images">
             <mu-flex justify-content="center">
-                <mu-paper>
-                    <mu-grid-list class="gridlist-demo">
-                        <mu-grid-tile :cols="2">
-                            <img :src="bookDetail.url" />
-                            <span slot="title">{{bookDetail.name}}</span>
-                            <span slot="subTitle">by
-                                <b>{{bookDetail.author}}</b>
-                            </span>
-                            <mu-button slot="action" icon>
-                                <mu-icon color="pink" value="star_border"></mu-icon>
-                            </mu-button>
-                        </mu-grid-tile>
-                    </mu-grid-list>
-                </mu-paper>
+                <mu-grid-list class="gridlist-demo">
+                    <mu-grid-tile :cols="2">
+                        <img :src="bookDetail.url" />
+                        <span slot="title">{{bookDetail.name}}</span>
+                        <span slot="subTitle">by
+                            <b>{{bookDetail.author}}</b>
+                        </span>
+                        <mu-button slot="action" icon>
+                            <mu-icon color="pink" value="star_border"></mu-icon>
+                        </mu-button>
+                    </mu-grid-tile>
+                </mu-grid-list>
             </mu-flex>
         </div>
 
-        <!-- <mu-grid-list class="gridlist-inline-demo" :cols="1">
-            <mu-grid-tile>
-                <img :src="bookInfo.url">
-                <span slot="title">{{bookInfo.name}}</span>
-                <span slot="subTitle">by
-                    <b>{{bookInfo.author}}</b>
-                </span>
-                <mu-button slot="action" icon>
-                    <mu-icon value="star_border"></mu-icon>
-                </mu-button>
-            </mu-grid-tile>
-        </mu-grid-list> -->
         <div class="love">
-            <mu-paper :z-depth="1">
-                <mu-list>
-                    <mu-list-item button :ripple="false">
-                        <mu-list-item-title>{{bookDetail.bookAverageScore}}分</mu-list-item-title>
-                        <mu-list-item-sub-title>
-                            已有{{bookDetail.bookThumbsCount}}人喜欢
-                        </mu-list-item-sub-title>
-                    </mu-list-item>
-                </mu-list>
-            </mu-paper>
+            <mu-list>
+                <mu-list-item button :ripple="false">
+                    <mu-list-item-title>{{bookDetail.bookAverageScore}}分</mu-list-item-title>
+                    <mu-list-item-sub-title>
+                        已有{{bookDetail.bookLoveCount}}人喜欢
+                    </mu-list-item-sub-title>
+                </mu-list-item>
+            </mu-list>
+            <mu-divider/>
         </div>
 
         <div class="tab">
-            <mu-tabs :value.sync="active1" inverse color="secondary" text-color="rgba(0, 0, 0, .54)">
+            <mu-tabs :value.sync="active1" inverse>
                 <mu-tab>图书介绍</mu-tab>
                 <mu-tab>{{commentCount}}</mu-tab>
             </mu-tabs>
@@ -76,7 +57,7 @@
                                 </mu-avatar>
                             </mu-list-item-action>
                             <mu-list-item-content>
-                                <mu-list-item-title>{{item.userName}}</mu-list-item-title>
+                                <mu-list-item-title>{{item.userId}}</mu-list-item-title>
                                 <mu-list-item-sub-title>
                                     <span style="color: rgba(0, 0, 0, .87)">{{item.commentContent}}</span>
                                 </mu-list-item-sub-title>
@@ -84,6 +65,9 @@
                                     <span>{{item.commentTime}}</span>
                                 </mu-list-item-sub-title>
                             </mu-list-item-content>
+                            <mu-list-item-action>
+                                <mu-list-item-after-text>{{item.bookScore}}分</mu-list-item-after-text>
+                            </mu-list-item-action>
                         </mu-list-item>
                         <mu-divider></mu-divider>
                     </div>
@@ -91,49 +75,30 @@
             </div>
         </div>
 
-        <mu-container class="bottom">
+        <mu-flex class="bottom" align-items="center">
+            <mu-flex justify-content="center" fill>
+                <mu-button large flat>
+                    <mu-icon size="20" color="yellow700" value="star"></mu-icon>
+                    喜欢
+                </mu-button>
+            </mu-flex>
+            <mu-flex justify-content="center" fill>
+                <mu-button @click="goBorrowBook" large flat color="cyan">立即借阅</mu-button>
+            </mu-flex>
+        </mu-flex>
+
+        <!-- <mu-container class="bottom">
             <mu-bottom-nav>
                 <mu-bottom-nav-item title="喜欢" icon="favorite"></mu-bottom-nav-item>
                 <button title="立即订阅" icon="local_grocery_store" @click="goBorrowBook">立即订阅</button>
             </mu-bottom-nav>
-        </mu-container>
-    </div>
-
-    <!-- <mu-grid-list class="card-image">
-            <mu-grid-tile class="card-image" title-position="top" action-position="left" :rows="bookInfo.featured ? 2 : 1" :cols="bookInfo.featured ? 2 : 1">
-                <span slot="title">{{bookInfo.name}}</span>
-                <span slot="subTitle">by
-                    <b>{{bookInfo.author}}</b>
-                </span>
-                <mu-button slot="action" icon>
-                    <mu-icon value="star_border"></mu-icon>
-                </mu-button>
-                <img class="images" :src="bookInfo.url" />
-            </mu-grid-tile>
-        </mu-grid-list>
-
-        <mu-list>
-            <mu-list-item button :ripple="false">
-                <mu-list-item-title>All mail</mu-list-item-title>
-                <mu-list-item-action>
-                    <mu-icon value="info"></mu-icon>
-                </mu-list-item-action>
-            </mu-list-item>
-
-        </mu-list>
-
-        <mu-container class="bottom">
-            <mu-bottom-nav :value.sync="shift" shift>
-                <mu-bottom-nav-item value="index" title="首页" icon="home"></mu-bottom-nav-item>
-                <mu-bottom-nav-item value="music" title="商城 " icon="local_grocery_store"></mu-bottom-nav-item>
-                <mu-bottom-nav-item value="books" title="联系人" icon="account_box"></mu-bottom-nav-item>
-                <mu-bottom-nav-item value="pictures" title="我的" icon="perm_identity"></mu-bottom-nav-item>
-            </mu-bottom-nav>
         </mu-container> -->
+    </div>
 
 </template>
 
 <script>
+import Cookies from "js-cookie";
 import { reqBookDetail } from "@/api/book";
 
 export default {
@@ -150,18 +115,22 @@ export default {
         featured: true
       },
       shift: "index",
-      active1: 0
+      active1: 0,
+      bookNo: ""
     };
   },
   mounted() {
+    this.bookNo = Cookies.get("storeMsg");
     this.reqBookDetailAction();
   },
   methods: {
-    reqBookDetailAction() {  
-      reqBookDetail(this.$store.state.storeMsg)
+    reqBookDetailAction() {
+      reqBookDetail(this.bookNo)
         .then(response => {
+          console.log(response.data);
           this.bookDetail = response.data;
-          this.commentCount = "图书评论（" + this.bookDetail.bookCommentList.length + "）";
+          this.commentCount =
+            "图书评论（" + this.bookDetail.bookCommentList.length + "）";
         })
         .catch(err => {
           console.log(err);
@@ -170,8 +139,8 @@ export default {
     goBack() {
       this.$router.back(-1);
     },
-    goBorrowBook () {
-        this.$router.push({ name: "BorrowConfirm" });
+    goBorrowBook() {
+      this.$router.push({ name: "BorrowConfirm" });
     }
   }
 };
@@ -199,8 +168,8 @@ export default {
   z-index: 40;
   width: 100%;
   max-width: 100%;
-  background-color: #fff;
   bottom: 0px;
+  background-color: transparent;
 }
 .love {
   width: 100%;
@@ -211,7 +180,7 @@ export default {
 }
 .demo-text {
   padding: 16px;
-  background: #fff;
+  background: transparent;
   text-align: left;
 }
 .tab {

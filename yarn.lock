@@ -4370,6 +4370,10 @@ muse-ui-message@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/muse-ui-message/-/muse-ui-message-0.2.0.tgz#1b6f4999b93238fc897d1d5a3ebcf52f4c729d6c"
 
+muse-ui-toast@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/muse-ui-toast/-/muse-ui-toast-0.3.0.tgz#572bc6c250579c3d6f4dafc8535e631c401b8db0"
+
 muse-ui@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/muse-ui/-/muse-ui-3.0.0.tgz#903d78c9520c132f88440465e85b74e72722e7f8"

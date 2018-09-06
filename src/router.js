@@ -9,7 +9,7 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/Home',
+      path: '/home',
       name: 'Home',
       component: Home
     },
@@ -47,6 +47,11 @@ export default new Router({
       component: () => import('./views/BorrowConfirm.vue')
     },
     {
+      path: '/borrowDetail',
+      name: 'BorrowDetail',
+      component: () => import('./views/BorrowDetail.vue')
+    },
+    {
       path: '/borrowSuccess',
       name: 'BorrowSuccess',
       component: () => import('./views/BorrowSuccess.vue')
@@ -67,7 +72,7 @@ export default new Router({
       component: () => import('./views/WantReadList.vue')
     },
     {
-      path: '/login',
+      path: '/',
       name: 'Login',
       component: () => import('./views/Login.vue')
     },

@@ -17,7 +17,7 @@ export function reqBookList(query) {
 
 export function reqBookCountList() {
   return request({
-    url: '/book/test',
+    url: '/book/home',
     method: 'get',
   })
 }
@@ -49,6 +49,13 @@ export function addWantReadBook(parameter) {
 export function reqWantReadBook(parameter) {
   return request({
     url: '/wantRead/byName/' + parameter,
+    method: 'get',
+  })
+}
+
+export function reqBookBorrowList(parameter) {
+  return request({
+    url: '/borrowBook/' + parameter,
     method: 'get',
   })
 }

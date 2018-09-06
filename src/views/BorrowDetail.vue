@@ -4,10 +4,10 @@
             <mu-paper :z-depth="1" class="demo-list-wrap">
 
                 <mu-appbar color="cyan">
-                    <mu-button icon slot="left">
-                        <mu-icon value="menu"></mu-icon>
+                    <mu-button icon slot="left" @click="goBack">
+                        <mu-icon value="chevron_left"></mu-icon>
                     </mu-button>
-                    Inbox
+                    借阅详情
                     <mu-button icon slot="right">
                         <mu-icon value="search"></mu-icon>
                     </mu-button>
@@ -29,7 +29,7 @@
                                     <mu-list-item-title>书号：HSBN-1-14-2</mu-list-item-title>
                                 </mu-list-item-content>
                                 <mu-list-item-action>
-                                    <mu-badge content="编号" color="primary"></mu-badge>
+                                    <mu-badge content="编号" color="cyan"></mu-badge>
                                 </mu-list-item-action>
                             </mu-list-item>
                             <mu-list-item>
@@ -37,7 +37,7 @@
                                     <mu-list-item-title>起始日期：2018-03-05</mu-list-item-title>
                                 </mu-list-item-content>
                                 <mu-list-item-action>
-                                    <mu-badge content="时间" color="primary"></mu-badge>
+                                    <mu-badge content="时间" color="cyan"></mu-badge>
                                 </mu-list-item-action>
                             </mu-list-item>
                             <mu-list-item>
@@ -45,7 +45,7 @@
                                     <mu-list-item-title>到期日期：2018-03-05</mu-list-item-title>
                                 </mu-list-item-content>
                                 <mu-list-item-action>
-                                    <mu-badge content="时间" color="primary"></mu-badge>
+                                    <mu-badge content="时间" color="cyan"></mu-badge>
                                 </mu-list-item-action>
                             </mu-list-item>
                             <mu-list-item>
@@ -53,7 +53,7 @@
                                     <mu-list-item-title>支付押金：20经验值</mu-list-item-title>
                                 </mu-list-item-content>
                                 <mu-list-item-action>
-                                    <mu-badge content="经验" color="primary"></mu-badge>
+                                    <mu-badge content="经验" color="cyan"></mu-badge>
                                 </mu-list-item-action>
                             </mu-list-item>
                         </mu-list>
@@ -88,7 +88,7 @@
                                     <mu-list-item-title>剩余经验值：20</mu-list-item-title>
                                 </mu-list-item-content>
                                 <mu-list-item-action>
-                                    <mu-badge content="剩余" color="primary"></mu-badge>
+                                    <mu-badge content="剩余" color="cyan"></mu-badge>
                                 </mu-list-item-action>
                             </mu-list-item>
                         </mu-list>
@@ -100,10 +100,10 @@
 
         <div>
             <div class="button">
-                <mu-button large  color="primary">取消借阅</mu-button>
+                <mu-button large color="cyan">取消借阅</mu-button>
             </div>
             <div class="button">
-                <mu-button large  color="primary">继续借阅</mu-button>
+                <mu-button large color="cyan">继续借阅</mu-button>
             </div>
         </div>
     </div>
@@ -119,7 +119,12 @@ export default {
       selects: null
     };
   },
-  mounted() {}
+  mounted() {},
+  methods: {
+    goBack() {
+      this.$router.back(-1);
+    }
+  }
 };
 </script>
 
@@ -133,5 +138,7 @@ export default {
 .button {
   margin-top: 30px;
   margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

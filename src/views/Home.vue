@@ -1,12 +1,12 @@
 <template>
   <mu-paper :z-depth="1" class="demo-list-wrap">
 
-    <mu-appbar class="top" color="primary">
-      <mu-button icon slot="left">
+    <mu-appbar class="top" color="cyan">
+      <mu-button icon slot="left" @click="goToMyZone">
         <mu-icon value="menu"></mu-icon>
       </mu-button>
       图书借阅
-      <mu-button flat slot="right">想看</mu-button>
+      <mu-button flat slot="right" @click="goToWantReadBook">想看</mu-button>
     </mu-appbar>
 
     <mu-divider></mu-divider>
@@ -114,7 +114,6 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$store.state.storeMsg);
     this.reqBookCountListAction();
   },
   methods: {
@@ -135,6 +134,12 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    goToWantReadBook(){
+      this.$router.push({ name: "WantReadList"});
+    },
+    goToMyZone() {
+      this.$router.push({ name: "MyZone"});
     }
   }
 };
@@ -163,7 +168,6 @@ export default {
   z-index: 40;
   width: 100%;
   max-width: 100%;
-  background-color: #2196f3;
   bottom: 0px;
 }
 .mu-list {
