@@ -2,7 +2,6 @@
     <div>
         <div>
             <mu-paper :z-depth="1" class="demo-list-wrap">
-
                 <mu-appbar color="cyan">
                     <mu-button icon slot="left" @click="goBack">
                         <mu-icon value="chevron_left"></mu-icon>
@@ -12,7 +11,6 @@
                         <mu-icon value="search"></mu-icon>
                     </mu-button>
                 </mu-appbar>
-
                 <mu-container>
                     <div>
                         <mu-list class="badge-list-wrap">
@@ -97,7 +95,6 @@
                 </mu-container>
             </mu-paper>
         </div>
-
         <div>
             <div class="button">
                 <mu-button large color="cyan">取消借阅</mu-button>

@@ -1,7 +1,7 @@
 <template>
     <mu-paper :z-depth="1" class="demo-list-wrap">
         <mu-appbar color="cyan">
-             <mu-button icon slot="left" @click="goBack">
+            <mu-button icon slot="left" @click="goBack">
                 <mu-icon value="chevron_left"></mu-icon>
             </mu-button>
             Inbox
@@ -9,7 +9,6 @@
                 <mu-icon value="add"></mu-icon>
             </mu-button>
         </mu-appbar>
-
         <mu-container class="tab">
             <mu-tabs color="rgba(0, 0, 0, .54)" :value.sync="active2" indicator-color="yellow" full-width>
                 <mu-tab>想看图书</mu-tab>
@@ -58,7 +57,6 @@
                 </mu-list>
             </div>
         </mu-container>
-
     </mu-paper>
 </template>
 
@@ -93,7 +91,7 @@ export default {
     },
     goBack() {
       this.$router.back(-1);
-    },
+    }
   }
 };
 </script>

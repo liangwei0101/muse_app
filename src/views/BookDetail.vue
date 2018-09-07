@@ -9,7 +9,6 @@
             </mu-button>
         </mu-appbar>
         <br>
-
         <div class="images">
             <mu-flex justify-content="center">
                 <mu-grid-list class="gridlist-demo">
@@ -26,7 +25,6 @@
                 </mu-grid-list>
             </mu-flex>
         </div>
-
         <div class="love">
             <mu-list>
                 <mu-list-item button :ripple="false">
@@ -38,7 +36,6 @@
             </mu-list>
             <mu-divider/>
         </div>
-
         <div class="tab">
             <mu-tabs :value.sync="active1" inverse>
                 <mu-tab>图书介绍</mu-tab>
@@ -74,7 +71,6 @@
                 </mu-list>
             </div>
         </div>
-
         <mu-flex class="bottom" align-items="center">
             <mu-flex justify-content="center" fill>
                 <mu-button large flat>
@@ -86,15 +82,7 @@
                 <mu-button @click="goBorrowBook" large flat color="cyan">立即借阅</mu-button>
             </mu-flex>
         </mu-flex>
-
-        <!-- <mu-container class="bottom">
-            <mu-bottom-nav>
-                <mu-bottom-nav-item title="喜欢" icon="favorite"></mu-bottom-nav-item>
-                <button title="立即订阅" icon="local_grocery_store" @click="goBorrowBook">立即订阅</button>
-            </mu-bottom-nav>
-        </mu-container> -->
     </div>
-
 </template>
 
 <script>

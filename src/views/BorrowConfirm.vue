@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <mu-appbar class="top" color="cyan">
       <mu-button icon slot="left" @click="goBack">
         <mu-icon value="chevron_left"></mu-icon>
@@ -8,7 +7,6 @@
       图书借阅
       <mu-button flat slot="right"></mu-button>
     </mu-appbar>
-
     <div class="content">
       <mu-list style="width:100%">
         <mu-list-item button :ripple="false">
@@ -37,11 +35,8 @@
       <br>
       <br>
       <a>对借书有疑问？去问问牛牛小助手</a>
-
     </div>
-
   </div>
-
 </template>
 
 <script>
@@ -66,8 +61,8 @@ export default {
   mounted() {
     let myDate = new Date();
     let year = myDate.getFullYear(); //得到年份
-	  let month = myDate.getMonth() + 1;//得到月份
-	  let date = myDate.getDate();//得到日期
+    let month = myDate.getMonth() + 1; //得到月份
+    let date = myDate.getDate(); //得到日期
     this.beginDate = year + "-" + month + "-" + date;
     console.log(this.beginDate);
     this.bookNo = Cookies.get("storeMsg");

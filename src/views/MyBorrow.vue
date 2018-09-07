@@ -9,7 +9,6 @@
                 <mu-icon value="search"></mu-icon>
             </mu-button>
         </mu-appbar>
-
         <mu-container class="tab">
             <mu-tabs color="rgba(0, 0, 0, .54)" :value.sync="active2" indicator-color="yellow" full-width>
                 <mu-tab>全部</mu-tab>
@@ -148,7 +147,7 @@
         </mu-container>
 
     </mu-paper>
-    </template>
+</template>
 
 <script>
 export default {

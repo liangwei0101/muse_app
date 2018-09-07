@@ -19,7 +19,6 @@
       </div>
   </div>
 </template>
-
 <script>
 import { getNextMonth } from "@/utils/time";
 import { reqBookDetail } from "@/api/book";

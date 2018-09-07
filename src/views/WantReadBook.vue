@@ -1,24 +1,22 @@
 <template>
-    <div>
-        <mu-appbar class="top" color="cyan">
-            <mu-button icon slot="left" @click="goBack">
-                <mu-icon value="chevron_left"></mu-icon>
-            </mu-button>
-            添加想看图书
-            <mu-button flat slot="right"></mu-button>
-        </mu-appbar>
-
-        <mu-container>
-            <mu-row gutter class="content">
-                <mu-col span="12" lg="4" sm="6">
-                    <mu-text-field v-model="bookName" label="请输入想看的图书名称" full-width></mu-text-field>
-                </mu-col>
-
-            </mu-row>
-            <br>
-            <mu-button class="button" color="cyan" @click="reqWantReadBookAction()">下一步</mu-button>
-        </mu-container>
-    </div>
+  <div>
+    <mu-appbar class="top" color="cyan">
+      <mu-button icon slot="left" @click="goBack">
+        <mu-icon value="chevron_left"></mu-icon>
+      </mu-button>
+      添加想看图书
+      <mu-button flat slot="right"></mu-button>
+    </mu-appbar>
+    <mu-container>
+      <mu-row gutter class="content">
+        <mu-col span="12" lg="4" sm="6">
+          <mu-text-field v-model="bookName" label="请输入想看的图书名称" full-width></mu-text-field>
+        </mu-col>
+      </mu-row>
+      <br>
+      <mu-button class="button" color="cyan" @click="reqWantReadBookAction()">下一步</mu-button>
+    </mu-container>
+  </div>
 </template>
 
 <script>

@@ -1,30 +1,28 @@
 <template>
-    <div>
-        <mu-appbar class="top" color="cyan">
-            <mu-button icon slot="left" @click="goBack">
-                <mu-icon value="chevron_left"></mu-icon>
-            </mu-button>
-            添加想看图书
-            <mu-button flat slot="right"></mu-button>
-        </mu-appbar>
-
-        <mu-container>
-
-            <div class="content">
-                <mu-divider></mu-divider>
-                <mu-list>
-                    <mu-list-item>
-                        <mu-list-item-content>
-                            <mu-list-item-title>书名：{{bookName}}</mu-list-item-title>
-                        </mu-list-item-content>
-                    </mu-list-item>
-                </mu-list>
-                <mu-divider></mu-divider>
-                <mu-text-field label="理由" class="input" full-width v-model="reason" placeholder="简单说明想看的理由" multi-line :rows="4" :max-length="40"></mu-text-field><br/>
-                <mu-button class="button" color="cyan" @click="addWantReadBookAction()">下一步</mu-button>
-            </div>
-        </mu-container>
-    </div>
+  <div>
+    <mu-appbar class="top" color="cyan">
+      <mu-button icon slot="left" @click="goBack">
+        <mu-icon value="chevron_left"></mu-icon>
+      </mu-button>
+      添加想看图书
+      <mu-button flat slot="right"></mu-button>
+    </mu-appbar>
+    <mu-container>
+      <div class="content">
+        <mu-divider></mu-divider>
+        <mu-list>
+          <mu-list-item>
+            <mu-list-item-content>
+              <mu-list-item-title>书名：{{bookName}}</mu-list-item-title>
+            </mu-list-item-content>
+          </mu-list-item>
+        </mu-list>
+        <mu-divider></mu-divider>
+        <mu-text-field label="理由" class="input" full-width v-model="reason" placeholder="简单说明想看的理由" multi-line :rows="4" :max-length="40"></mu-text-field><br/>
+        <mu-button class="button" color="cyan" @click="addWantReadBookAction()">下一步</mu-button>
+      </div>
+    </mu-container>
+  </div>
 </template>
 
 <script>

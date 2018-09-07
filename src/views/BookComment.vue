@@ -2,7 +2,6 @@
     <div>
         <div>
             <mu-paper :z-depth="1" class="demo-list-wrap">
-
                 <mu-appbar color="cyan">
                     <mu-button icon slot="left">
                         <mu-icon value="menu"></mu-icon>
@@ -12,7 +11,6 @@
                         <mu-icon value="search"></mu-icon>
                     </mu-button>
                 </mu-appbar>
-
                 <mu-list textline="two-line">
                     <mu-list-item avatar :ripple="false" button>
                         <mu-list-item-action>
@@ -28,9 +26,7 @@
                             <mu-list-item-after-text>{{book.endDate}}</mu-list-item-after-text>
                         </mu-list-item-action>
                     </mu-list-item>
-
-                    <mu-divider></mu-divider>
-
+                    <mu-divider/>
                     <mu-list-item avatar :ripple="false" button>
                         <mu-badge :content="`评分:${book.bookScore}`" color="cyan"></mu-badge>
                         <mu-list-item-content class="slider">
@@ -38,23 +34,20 @@
                         </mu-list-item-content>
                     </mu-list-item>
                 </mu-list>
-                <mu-divider></mu-divider>
+                <mu-divider/>
                 <div class="inputComment">
                     <mu-text-field multi-line v-model="book.commentContent" :rows="8" placeholder="（选填）请发表你的看法" solo full-width class="demo-divider-form"></mu-text-field>
                 </div>
             </mu-paper>
         </div>
-
         <div class="button">
             <mu-button large color="cyan" @click="addBookCommentAction">提交</mu-button>
-
             <mu-snackbar position="bottom" :open.sync="normal.open">
                 {{normal.message}}
                 <mu-button flat slot="action" color="secondary" @click="normal.open = false">关闭</mu-button>
             </mu-snackbar>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -118,7 +111,9 @@ export default {
       addBookComment(this.book)
         .then(response => {
           this.openNormalSnackbar();
-          setTimeout(()=>{ this.$router.back(-1); }, 1200);
+          setTimeout(() => {
+            this.$router.back(-1);
+          }, 1200);
         })
         .catch(err => {
           console.log(err);

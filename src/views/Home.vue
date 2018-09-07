@@ -1,6 +1,5 @@
 <template>
   <mu-paper :z-depth="1" class="demo-list-wrap">
-
     <mu-appbar class="top" color="cyan">
       <mu-button icon slot="left" @click="goToMyZone">
         <mu-icon value="menu"></mu-icon>
@@ -8,9 +7,7 @@
       图书借阅
       <mu-button flat slot="right" @click="goToWantReadBook">想看</mu-button>
     </mu-appbar>
-
-    <mu-divider></mu-divider>
-
+    <mu-divider/>
     <div class="swipper">
       <mu-carousel hide-indicators style="height:200px" class="appbar">
         <mu-carousel-item v-for="(image,index) in images" :key="index">
@@ -18,11 +15,9 @@
         </mu-carousel-item>
       </mu-carousel>
     </div>
-
     <mu-list textline="two-line" v-show="newBookListIsShow">
       <mu-sub-header>新书上架</mu-sub-header>
       <mu-divider/>
-
       <div v-for="(item,index) in newBookList" :key="index">
         <mu-list-item avatar :ripple="false" button @click="goToBookDetail(item.no)">
           <mu-list-item-action>
@@ -50,7 +45,6 @@
         <mu-divider/>
       </div>
     </mu-list>
-
     <mu-list textline="two-line">
       <mu-sub-header>全部图书</mu-sub-header>
       <mu-divider/>
@@ -82,16 +76,6 @@
         <mu-divider/>
       </div>
     </mu-list>
-
-    <!-- <mu-container class="bottom">
-      <mu-bottom-nav :value.sync="shift" shift>
-        <mu-bottom-nav-item value="index" title="首页" icon="home"></mu-bottom-nav-item>
-        <mu-bottom-nav-item value="music" title="商城 " icon="local_grocery_store"></mu-bottom-nav-item>
-        <mu-bottom-nav-item value="books" title="联系人" icon="account_box"></mu-bottom-nav-item>
-        <mu-bottom-nav-item value="pictures" title="我的" icon="perm_identity"></mu-bottom-nav-item>
-      </mu-bottom-nav>
-    </mu-container> -->
-
   </mu-paper>
 </template>
 
@@ -110,7 +94,7 @@ export default {
       ],
       shift: "index",
       newBookListIsShow: false,
-      open: 'drafts'
+      open: "drafts"
     };
   },
   mounted() {
@@ -118,7 +102,7 @@ export default {
   },
   methods: {
     goToBookDetail(arg) {
-      this.$store.commit('setStoreMsg',arg);
+      this.$store.commit("setStoreMsg", arg);
       this.$router.push({ name: "HomeDetail", params: { bookNo: arg } });
     },
     reqBookCountListAction() {
@@ -126,7 +110,7 @@ export default {
         .then(response => {
           this.bookList = response.data;
           this.newBookList = this.bookList.slice(0, 2);
-          if(this.newBookList.length > 0){
+          if (this.newBookList.length > 0) {
             this.newBookListIsShow = true;
           }
           console.log(response.data);
@@ -135,11 +119,11 @@ export default {
           console.log(err);
         });
     },
-    goToWantReadBook(){
-      this.$router.push({ name: "WantReadList"});
+    goToWantReadBook() {
+      this.$router.push({ name: "WantReadList" });
     },
     goToMyZone() {
-      this.$router.push({ name: "MyZone"});
+      this.$router.push({ name: "MyZone" });
     }
   }
 };
